@@ -45,4 +45,14 @@ public class User {
     public Date getRegister_date() {
         return register_date;
     }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "user_name='" + user_name + '\'' +
+                ", password='" + password + '\'' +
+                ", email='" + email + '\'' +
+                ", register_date=" + register_date +
+                '}';
+    }
 }
