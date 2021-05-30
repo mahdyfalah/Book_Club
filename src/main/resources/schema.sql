@@ -1,16 +1,17 @@
 CREATE TABLE user(
-    user_name VARCHAR (255) identity NOT NULL UNIQUE,
+    user_id INT NOT NULL AUTO_INCREMENT,
+    user_name VARCHAR (255) NOT NULL UNIQUE,
     password VARCHAR (255) NOT NULL,
     email VARCHAR (255) NOT NULL,
     register_date DATE NOT NULL,
-    PRIMARY KEY (user_name)
+    PRIMARY KEY (user_id)
 );
 
 CREATE TABLE admin(
-    admin_user_name VARCHAR (255) REFERENCES user (user_name),
+    admin_user_id INT REFERENCES user (user_id),
     phone_NR VARCHAR(16) NOT NULL,
     address VARCHAR (255),
-    PRIMARY KEY (admin_user_name)
+    PRIMARY KEY (admin_user_id)
 );
 
 CREATE TABLE rate(
@@ -18,27 +19,28 @@ CREATE TABLE rate(
     rate INT NOT NULL,
     text_review VARCHAR (255),
     rate_date DATE NOT NULL,
-    PRIMARY KEY (rating_ID)
+    PRIMARY KEY (rating_id)
 );
 
 CREATE TABLE book(
-    isbn VARCHAR (255) identity NOT NULL UNIQUE,
+    book_id INT NOT NULL AUTO_INCREMENT,
+    isbn VARCHAR (255) NOT NULL UNIQUE,
     title VARCHAR (255) NOT NULL,
     publisher VARCHAR (255) NOT NULL,
     release_date DATE NOT NULL,
-    PRIMARY KEY (isbn)
+    PRIMARY KEY (book_id)
 );
 
-CREATE TABLE abstract(
-    isbn VARCHAR (255) REFERENCES book (isbn),
+CREATE TABLE book_abstract(
+    book_abstract_id VARCHAR (255) REFERENCES book (book_id),
     details VARCHAR (255) NOT NULL,
     parental_advisory VARCHAR (255) NOT NULL,
-    PRIMARY KEY (isbn)
+    PRIMARY KEY (book_abstract_id)
 );
 
 CREATE TABLE genre(
-    genre_ID INT NOT NULL AUTO_INCREMENT,
+    genre_id INT NOT NULL AUTO_INCREMENT,
     name VARCHAR (255) NOT NULL,
     age_restriction INT (2),
-    PRIMARY KEY (genre_ID)
+    PRIMARY KEY (genre_id)
 );

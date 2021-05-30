@@ -1,7 +1,7 @@
 package model;
 
 public class Genre {
-    private String genre_ID;
+    private int genre_id;
     private String name;
     private String age_restriction;
 
@@ -13,12 +13,12 @@ public class Genre {
         this.age_restriction = age_restriction;
     }
 
-    public String getGenre_ID() {
-        return genre_ID;
+    public int getGenre_id() {
+        return genre_id;
     }
 
-    public void setGenre_ID(String genre_ID) {
-        this.genre_ID = genre_ID;
+    public void setGenre_id(int genre_id) {
+        this.genre_id = genre_id;
     }
 
     public String getName() {
@@ -40,7 +40,7 @@ public class Genre {
     @Override
     public String toString() {
         return "Genre{" +
-                "genre_ID='" + genre_ID + '\'' +
+                "genre_id=" + genre_id +
                 ", name='" + name + '\'' +
                 ", age_restriction='" + age_restriction + '\'' +
                 '}';

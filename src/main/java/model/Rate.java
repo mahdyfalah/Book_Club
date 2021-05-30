@@ -3,7 +3,7 @@ package model;
 import java.util.Date;
 
 public class Rate {
-    private String rating_ID;
+    private int rating_id;
     private int rate;
     private String text_review;
     private Date rate_date;
@@ -11,19 +11,19 @@ public class Rate {
     public Rate() {
     }
 
-    public Rate(String rating_ID, int rate, String text_review) {
-        this.rating_ID = rating_ID;
+    public Rate(int rating_ID, int rate, String text_review) {
+        this.rating_id = rating_ID;
         this.rate = rate;
         this.text_review = text_review;
         this.rate_date = new Date();
     }
 
-    public String getRating_ID() {
-        return rating_ID;
+    public int getRating_id() {
+        return rating_id;
     }
 
-    public void setRating_ID(String rating_ID) {
-        this.rating_ID = rating_ID;
+    public void setRating_id(int rating_id) {
+        this.rating_id = rating_id;
     }
 
     public int getRate() {
@@ -49,7 +49,7 @@ public class Rate {
     @Override
     public String toString() {
         return "Rate{" +
-                "rating_ID='" + rating_ID + '\'' +
+                "rating_id=" + rating_id +
                 ", rate=" + rate +
                 ", text_review='" + text_review + '\'' +
                 ", rate_date=" + rate_date +

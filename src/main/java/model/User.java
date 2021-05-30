@@ -3,6 +3,7 @@ package model;
 import java.util.Date;
 
 public class User {
+    private int user_id;
     private String user_name;
     private String password;
     private String email;
@@ -11,11 +12,24 @@ public class User {
     public User() {
     }
 
-    public User(String user_name, String password, String email) {
+    public User(int user_id, String user_name, String password, String email) {
+        this.user_id = user_id;
         this.user_name = user_name;
         this.password = password;
         this.email = email;
-        register_date = new Date();
+        this.register_date = new Date();
+    }
+
+    public int getUser_id() {
+        return user_id;
+    }
+
+    public void setUser_id(int user_id) {
+        this.user_id = user_id;
+    }
+
+    public void setRegister_date(Date register_date) {
+        this.register_date = register_date;
     }
 
     public String getUser_name() {
@@ -49,7 +63,8 @@ public class User {
     @Override
     public String toString() {
         return "User{" +
-                "user_name='" + user_name + '\'' +
+                "user_id=" + user_id +
+                ", user_name='" + user_name + '\'' +
                 ", password='" + password + '\'' +
                 ", email='" + email + '\'' +
                 ", register_date=" + register_date +

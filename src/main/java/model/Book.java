@@ -3,6 +3,7 @@ package model;
 import java.util.Date;
 
 public class Book {
+    private int book_id;
     private String isbn;
     private String title;
     private String publisher;
@@ -11,11 +12,20 @@ public class Book {
     public Book() {
     }
 
-    public Book(String isbn, String title, String publisher, Date release_date) {
+    public Book(int book_id, String isbn, String title, String publisher, Date release_date) {
+        this.book_id = book_id;
         this.isbn = isbn;
         this.title = title;
         this.publisher = publisher;
         this.release_date = release_date;
+    }
+
+    public int getBook_id() {
+        return book_id;
+    }
+
+    public void setBook_id(int book_id) {
+        this.book_id = book_id;
     }
 
     public String getIsbn() {
@@ -53,7 +63,8 @@ public class Book {
     @Override
     public String toString() {
         return "Book{" +
-                "isbn='" + isbn + '\'' +
+                "book_id=" + book_id +
+                ", isbn='" + isbn + '\'' +
                 ", title='" + title + '\'' +
                 ", publisher='" + publisher + '\'' +
                 ", release_date=" + release_date +
