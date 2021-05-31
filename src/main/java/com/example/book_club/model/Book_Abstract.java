@@ -1,6 +1,19 @@
-package model;
+package com.example.book_club.model;
 
+import lombok.Data;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Data
+@Table(name = "Book_Abstract")
 public class Book_Abstract {
+
+    @Id
+    @GeneratedValue
     private int book_abstract_id;
     private String details;
     private String parental_advisory;

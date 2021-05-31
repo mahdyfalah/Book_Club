@@ -1,23 +1,35 @@
-package model;
+package com.example.book_club.model;
 
+import lombok.Data;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import java.util.Date;
 
+@Entity
+@Data
+@Table(name = "User")
 public class User {
+
+    @Id
+    @GeneratedValue
     private int user_id;
     private String user_name;
     private String password;
     private String email;
-    private Date register_date;
+    private String register_date;
 
     public User() {
     }
 
-    public User(int user_id, String user_name, String password, String email) {
-        this.user_id = user_id;
+    public User(String user_name, String password, String email,String date) {
+
         this.user_name = user_name;
         this.password = password;
         this.email = email;
-        this.register_date = new Date();
+        this.register_date = date;
     }
 
     public int getUser_id() {
@@ -28,9 +40,6 @@ public class User {
         this.user_id = user_id;
     }
 
-    public void setRegister_date(Date register_date) {
-        this.register_date = register_date;
-    }
 
     public String getUser_name() {
         return user_name;
@@ -56,8 +65,12 @@ public class User {
         this.email = email;
     }
 
-    public Date getRegister_date() {
+    public String getRegister_date() {
         return register_date;
+    }
+
+    public void setRegister_date(String register_date) {
+        this.register_date = register_date;
     }
 
     @Override

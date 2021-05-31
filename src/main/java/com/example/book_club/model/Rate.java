@@ -1,8 +1,22 @@
-package model;
+package com.example.book_club.model;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import java.util.Date;
 
+@Entity
+@Data
+@AllArgsConstructor
+@Table(name = "Rate")
 public class Rate {
+
+    @Id
+    @GeneratedValue
     private int rating_id;
     private int rate;
     private String text_review;

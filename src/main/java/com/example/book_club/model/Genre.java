@@ -1,6 +1,21 @@
-package model;
+package com.example.book_club.model;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Data
+@AllArgsConstructor
+@Table(name = "Genre")
 public class Genre {
+
+    @Id
+    @GeneratedValue
     private int genre_id;
     private String name;
     private String age_restriction;

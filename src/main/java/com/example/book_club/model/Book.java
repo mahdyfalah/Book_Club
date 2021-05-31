@@ -1,8 +1,21 @@
-package model;
+package com.example.book_club.model;
 
+import lombok.Data;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import java.util.Date;
 
+
+@Entity
+@Data
+@Table(name = "Book")
 public class Book {
+
+    @Id
+    @GeneratedValue
     private int book_id;
     private String isbn;
     private String title;

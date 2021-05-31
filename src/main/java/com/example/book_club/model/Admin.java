@@ -1,6 +1,8 @@
-package model;
+package com.example.book_club.model;
+
 
 public class Admin extends User{
+
     private String phone_NR;
     private String address;
 
@@ -8,8 +10,8 @@ public class Admin extends User{
         super();
     }
 
-    public Admin(int user_id, String user_name, String password, String email, String phone_NR, String address) {
-        super(user_id, user_name, password, email);
+    public Admin(String user_name, String password, String email,String date, String phone_NR, String address) {
+        super(user_name, password, email,date);
         this.phone_NR = phone_NR;
         this.address = address;
     }
