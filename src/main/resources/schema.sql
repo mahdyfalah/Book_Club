@@ -43,7 +43,6 @@ CREATE TABLE book(
     isbn VARCHAR (255) NOT NULL UNIQUE,
     title VARCHAR (255) NOT NULL,
     publisher VARCHAR (255) NOT NULL,
-    release_date DATE NOT NULL,
     PRIMARY KEY (book_id)
 );
 

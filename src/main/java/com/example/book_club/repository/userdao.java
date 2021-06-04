@@ -1,4 +1,4 @@
-package com.example.book_club.Repository;
+package com.example.book_club.repository;
 
 import com.example.book_club.model.User;
 

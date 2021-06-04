@@ -2,10 +2,7 @@ package com.example.book_club.model;
 
 import lombok.Data;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.Date;
 
 
@@ -15,29 +12,26 @@ import java.util.Date;
 public class Book {
 
     @Id
-    @GeneratedValue
-    private int book_id;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Integer book_id;
     private String isbn;
     private String title;
     private String publisher;
-    private Date release_date;
 
     public Book() {
     }
 
-    public Book(int book_id, String isbn, String title, String publisher, Date release_date) {
-        this.book_id = book_id;
+    public Book(String isbn, String title, String publisher) {
         this.isbn = isbn;
         this.title = title;
         this.publisher = publisher;
-        this.release_date = release_date;
     }
 
-    public int getBook_id() {
+    public Integer getBook_id() {
         return book_id;
     }
 
-    public void setBook_id(int book_id) {
+    public void setBook_id(Integer book_id) {
         this.book_id = book_id;
     }
 
@@ -65,13 +59,7 @@ public class Book {
         this.publisher = publisher;
     }
 
-    public Date getRelease_date() {
-        return release_date;
-    }
 
-    public void setRelease_date(Date release_date) {
-        this.release_date = release_date;
-    }
 
     @Override
     public String toString() {
@@ -80,7 +68,6 @@ public class Book {
                 ", isbn='" + isbn + '\'' +
                 ", title='" + title + '\'' +
                 ", publisher='" + publisher + '\'' +
-                ", release_date=" + release_date +
                 '}';
     }
 }

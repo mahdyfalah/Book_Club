@@ -1,6 +1,6 @@
-package com.example.book_club.Repository.implement;
+package com.example.book_club.repository.implement;
 
-import com.example.book_club.Repository.userdao;
+import com.example.book_club.repository.userdao;
 import com.example.book_club.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.support.JdbcDaoSupport;
@@ -8,7 +8,6 @@ import org.springframework.stereotype.Repository;
 
 import javax.annotation.PostConstruct;
 import javax.sql.DataSource;
-import javax.transaction.Transactional;
 
 @Repository
 public class UserdaoImplement extends JdbcDaoSupport implements userdao {
