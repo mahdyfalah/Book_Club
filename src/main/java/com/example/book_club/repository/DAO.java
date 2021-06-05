@@ -10,7 +10,7 @@ public interface DAO<T> {
 
     Optional<T> get(Integer id);
 
-    void update(T t, int id);
+    Optional<T> update(T t, int id);
 
     void delete(int id);
 }

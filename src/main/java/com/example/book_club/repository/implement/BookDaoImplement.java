@@ -94,9 +94,10 @@ public class BookDaoImplement extends JdbcDaoSupport implements DAO<Book> {
     }
 
     @Override
-    public void update(Book book, int id) {
-//        String sql = "UPDATE book (isbn, title, publisher) VALUES (?, ?, ?)" ;
-//        getJdbcTemplate().update(sql, book.getIsbn(), book.getTitle(), book.getPublisher());
+    public Optional<Book> update(Book book, int id) {
+        String sql = "UPDATE book SET isbn = ?, title = ?, publisher = ? WHERE book_id = ?" ;
+        getJdbcTemplate().update(sql, book.getIsbn(), book.getTitle(), book.getPublisher(), id);
+        return get(id);
     }
 
     @Override

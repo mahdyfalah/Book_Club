@@ -27,7 +27,6 @@ public class BookController {
     private ResponseHandler responseHandler;
 
     public BookController(BookDaoImplement bookdaoImplement, ResponseHandler responseHandler) {
-
         this.bookdaoImplement = bookdaoImplement;
         this.responseHandler = responseHandler;
     }
@@ -53,17 +52,17 @@ public class BookController {
         return responseHandler.successProvider(HttpStatus.OK, MessageProperties.BOOKS_RECIEVED_MSG, book);
     }
 
-//    @GetMapping("/getbookbytitle/{title}")
-//    public ResponseEntity<Book> getBookByTitle(@PathVariable("title") String title){
-//        Book book = bookdaoImplement.getByTitle(title).orElseThrow(() -> new RuntimeException() );
-//        System.out.println(book);
-//        return new ResponseEntity<Book>(book, HttpStatus.OK);
-//    }
 
     @GetMapping("/getbookbytitle/{title}")
     public ResponseEntity<?> getBookByTitle(@PathVariable("title") String title){
         Map<String, Object> map = bookdaoImplement.getByTitle(title);
         return responseHandler.successProvider(HttpStatus.OK, MessageProperties.BOOKS_RECIEVED_MSG, map);
+    }
+
+    @PutMapping("/updatebook/{id}")
+    public ResponseEntity<?> updateBook(@RequestBody Book book, @PathVariable Integer id){
+        book = bookdaoImplement.update(book, id).orElseThrow(() -> new RuntimeException());
+        return responseHandler.successProvider(HttpStatus.OK, MessageProperties.BOOKS_RECIEVED_MSG, book);
     }
 
 
