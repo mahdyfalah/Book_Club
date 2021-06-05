@@ -47,7 +47,7 @@ CREATE TABLE book(
 );
 
 CREATE TABLE book_abstract(
-    book_abstract_id VARCHAR (255) REFERENCES book (book_id),
+    book_abstract_id INT NOT NULL AUTO_INCREMENT,
     details VARCHAR (255) NOT NULL,
     parental_advisory VARCHAR (255) NOT NULL,
     PRIMARY KEY (book_abstract_id)

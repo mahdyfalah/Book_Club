@@ -44,13 +44,6 @@ public class BookDaoImplement extends JdbcDaoSupport implements DAO<Book> {
         return book;
     };
 
-    RowMapper<Book> rowMapperTitle = (rs, rowNum) -> {
-        Book book = new Book();
-        book.setIsbn(rs.getString("isbn"));
-        book.setTitle(rs.getString("title"));
-        return book;
-    };
-
 
     @Override
     public List<Book> list() {
@@ -62,7 +55,6 @@ public class BookDaoImplement extends JdbcDaoSupport implements DAO<Book> {
     @Override
     public int create(Book book) {
         String sql = "INSERT INTO book (isbn, title, publisher) VALUES (?, ?, ?)" ;
-//        getJdbcTemplate().update(sql, book.getIsbn(), book.getTitle(), book.getPublisher(), keyHolder);
         KeyHolder keyHolder = new GeneratedKeyHolder();
         jdbcTemplate.update(connection -> {
             PreparedStatement ps = connection.prepareStatement(sql, new String[]{"book_id"});
