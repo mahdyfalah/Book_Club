@@ -65,6 +65,11 @@ public class BookController {
         return responseHandler.successProvider(HttpStatus.OK, MessageProperties.BOOKS_RECIEVED_MSG, book);
     }
 
+    @DeleteMapping("/deletebook/{id}")
+    public ResponseEntity<?> deleteBook(@PathVariable Integer id){
+        bookdaoImplement.delete(id);
+        return responseHandler.successProvider(HttpStatus.OK, MessageProperties.BOOKS_RECIEVED_MSG);
+    }
 
 
 //    @GetMapping("/addbook")

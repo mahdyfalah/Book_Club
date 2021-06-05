@@ -102,6 +102,7 @@ public class BookDaoImplement extends JdbcDaoSupport implements DAO<Book> {
 
     @Override
     public void delete(int id) {
-
+        String sql = "DELETE FROM book WHERE book_id = ?";
+        getJdbcTemplate().update(sql, id);
     }
 }
