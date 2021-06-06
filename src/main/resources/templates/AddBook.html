@@ -10,14 +10,12 @@
   <h1>Add New Book</h1>
   <h1></h1>
   <hr style="height:2px;border-width:0;color:gray;background-color:gray">
-  <form action="#" th:action="@{/addbook}" method="POST">
-    <div><input placeholder="Book Name" type="text" name="productName" required/></div>
+  <form action="#" th:action="@{/saveBook}" th:object="${Book}" method="POST">
+    <div><input placeholder="Book Name" th:field="*{title}" type="text" name="productName" required/></div>
     <hr style="height:2px;border-width:0;color:gray;background-color:gray">
-    <div><input placeholder="Book isbn" type="text" name="description" required/></div>
+    <div><input placeholder="Book isbn" th:field="*{isbn}" type="text" name="description" required/></div>
     <hr style="height:2px;border-width:0;color:gray;background-color:gray">
-    <div><input placeholder="Book publisher" type="text" name="quantity" required/></div>
-    <hr style="height:2px;border-width:0;color:gray;background-color:gray">
-    <div><input placeholder="Book release_date"  type="text" name="value" required/></div>
+    <div><input placeholder="Book publisher" th:field="*{publisher}" type="text" name="quantity" required/></div>
     <hr style="height:2px;border-width:0;color:gray;background-color:gray">
 
     <div><button type="submit" class="btn btn-info btn-sm mb-3">Save</button></div>

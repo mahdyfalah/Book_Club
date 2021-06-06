@@ -8,6 +8,7 @@ import com.example.book_club.response.ResponseHandler;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -35,12 +36,24 @@ public class BookController {
         return responseHandler.successProvider(HttpStatus.CREATED, MessageProperties.BOOKS_RECIEVED_MSG, book);
     }
 
+    @GetMapping("/add")
+    public String add(Model model) {
+        Book book = new Book();
+        model.addAttribute("Book", book);
+        return "AddBook";
+    }
+
+    @PostMapping("/saveBook")
+    public String saveProduct(@ModelAttribute("book") Book book) {
+        service.create(book);
+        return "redirect:/add";
+    }
+
     @GetMapping("/getbooks")
     public ResponseEntity<?> getBooks(){
         List<Book> list = service.list();
         return responseHandler.successProvider(HttpStatus.OK, MessageProperties.BOOKS_RECIEVED_MSG, list);
     }
-
 
     @GetMapping("/getbookbyid/{id}")
     public ResponseEntity<?> getBookById(@PathVariable Integer id){
