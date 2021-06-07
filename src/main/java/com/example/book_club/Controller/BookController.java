@@ -49,6 +49,12 @@ public class BookController {
         return "redirect:/add";
     }
 
+    @GetMapping("/ListOfBooks")
+    public String viewListOfProducts(Model model) {
+        model.addAttribute("listBooks", service.list());
+        return "Books";
+    }
+
     @GetMapping("/getbooks")
     public ResponseEntity<?> getBooks(){
         List<Book> list = service.list();
