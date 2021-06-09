@@ -39,12 +39,13 @@ public class Book_AbstractDaoImplement extends JdbcDaoSupport implements DAO<Boo
 
     @Override
     public int create(Book_Abstract book_abstract) {
-        String sql = "INSERT INTO book_abstract (details, parental_advisory) VALUES (?, ?)" ;
+        String sql = "INSERT INTO book_abstract (details, parental_advisory, book_id) VALUES (?, ?, ?)" ;
         KeyHolder keyHolder = new GeneratedKeyHolder();
         jdbcTemplate.update(connection -> {
             PreparedStatement ps = connection.prepareStatement(sql, new String[]{"book_abstract_id"});
             ps.setString(1, book_abstract.getDetails());
             ps.setString(2, book_abstract.getParental_advisory());
+            ps.setInt(3, book_abstract.getBook_id());
             return ps;
         }, keyHolder);
         return keyHolder.getKey().intValue();

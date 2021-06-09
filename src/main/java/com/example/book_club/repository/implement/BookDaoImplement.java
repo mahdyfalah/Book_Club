@@ -15,7 +15,6 @@ import org.springframework.stereotype.Repository;
 import javax.annotation.PostConstruct;
 import javax.sql.DataSource;
 import java.sql.PreparedStatement;
-import java.sql.Statement;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -52,6 +51,13 @@ public class BookDaoImplement extends JdbcDaoSupport implements DAO<Book> {
         return list;
     }
 
+
+    public List<Book> listByTitle(String title) {
+        String sql = "Select * From book WHERE title = ?";
+        List<Book> list = jdbcTemplate.query(sql, new Object[]{title}, rowMapper);
+        return list;
+    }
+
     @Override
     public int create(Book book) {
         String sql = "INSERT INTO book (isbn, title, publisher) VALUES (?, ?, ?)" ;
@@ -75,13 +81,16 @@ public class BookDaoImplement extends JdbcDaoSupport implements DAO<Book> {
         return Optional.ofNullable(book);
     }
 
+        public Optional<Book> searchByTitle(String title) {
+        String sql = "SELECT * FROM Book b WHERE b.title = ?";
+
+        Book book= jdbcTemplate.queryForObject(sql, new Object[]{title}, rowMapper);
+        return Optional.ofNullable(book);
+    }
+
     public Map<String, Object> getByTitle(String title) {
         String sql = "SELECT isbn FROM Book b WHERE b.title = ?";
-
-
         Map<String, Object> query = jdbcTemplate.queryForMap(sql, new Object[]{title});
-
-
         return query;
     }
 

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Add New Book Abstract</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container">
+    <h1>Add New Book Abstract</h1>
+    <h1></h1>
+    <hr style="height:2px;border-width:0;color:gray;background-color:gray">
+    <form action="#" th:action="@{/saveBook_Abstract}" th:object="${Book_Abstract}" method="POST">
+        <div><input placeholder="Details" th:field="*{details}" type="text" name="productName" required/></div>
+        <hr style="height:2px;border-width:0;color:gray;background-color:gray">
+        <div><input placeholder="Parental Advisory" th:field="*{parental_advisory}" type="text" name="description" required/></div>
+        <hr style="height:2px;border-width:0;color:gray;background-color:gray">
+        <div><input placeholder="Book ID" th:field="*{book_id}" type="text" name="description" required/></div>
+        <hr style="height:2px;border-width:0;color:gray;background-color:gray">
+
+        <div><button type="submit" class="btn btn-info btn-sm mb-3">Save Abstract</button></div>
+    </form>
+</div>
+</body>
+</html>

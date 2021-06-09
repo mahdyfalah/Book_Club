@@ -5,6 +5,7 @@ import com.example.book_club.model.Book;
 import com.example.book_club.repository.implement.BookDaoImplement;
 import com.example.book_club.response.MessageProperties;
 import com.example.book_club.response.ResponseHandler;
+import org.springframework.data.repository.query.Param;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -18,8 +19,6 @@ import java.util.Map;
 @Controller
 public class BookController {
 
-
-//    private UserdaoImplement implement;
     private BookDaoImplement service;
     private ResponseHandler responseHandler;
 
@@ -29,14 +28,8 @@ public class BookController {
     }
 
 
-    @PostMapping("/addbook")
-    public ResponseEntity<?> addBook(@RequestBody Book book){
-        int i = service.create(book);
-        book.setBook_id(i);
-        return responseHandler.successProvider(HttpStatus.CREATED, MessageProperties.BOOKS_RECIEVED_MSG, book);
-    }
 
-    @GetMapping("/add")
+    @GetMapping("/addBook")
     public String add(Model model) {
         Book book = new Book();
         model.addAttribute("Book", book);
@@ -46,14 +39,21 @@ public class BookController {
     @PostMapping("/saveBook")
     public String saveProduct(@ModelAttribute("book") Book book) {
         service.create(book);
-        return "redirect:/add";
+        return "redirect:/addBook";
     }
 
     @GetMapping("/ListOfBooks")
-    public String viewListOfProducts(Model model) {
+    public String viewListOfBooks(Model model) {
         model.addAttribute("listBooks", service.list());
         return "Books";
     }
+
+    @GetMapping("/ListOfBooksByTitle")
+    public String viewListOfBooksByTitle(Model model, @Param("title") String title) {
+        model.addAttribute("listBooks", service.listByTitle(title));
+        return "BooksByTitle";
+    }
+
 
     @GetMapping("/getbooks")
     public ResponseEntity<?> getBooks(){
@@ -74,6 +74,8 @@ public class BookController {
         return responseHandler.successProvider(HttpStatus.OK, MessageProperties.BOOKS_RECIEVED_MSG, map);
     }
 
+
+
     @PutMapping("/updatebook/{id}")
     public ResponseEntity<?> updateBook(@RequestBody Book book, @PathVariable Integer id){
         book = service.update(book, id).orElseThrow(() -> new RuntimeException());
@@ -85,40 +87,6 @@ public class BookController {
         service.delete(id);
         return responseHandler.successProvider(HttpStatus.OK, MessageProperties.BOOKS_RECIEVED_MSG);
     }
-
-
-//    @GetMapping("/addbook")
-//    public String addbook(Model model, Book book) {
-//        model.addAttribute("Book", book);
-//
-//
-//
-////        User user = new User();
-////
-////        user.setEmail("test11");
-////        user.setPassword("ye1");
-////        user.setUser_name("test1");
-////        user.setRegister_date("test");
-////        bookdaoImplement.insert(user);
-//
-//        return "AddBook";
-//    }
-
-//    @PostMapping("/adduser")
-//    public String addProduct(@RequestBody User user) {
-//
-////        User user = new User();
-////
-////        user.setEmail("test11");
-////        user.setPassword("ye1");
-////        user.setUser_name("test1");
-////        user.setRegister_date("test");
-//
-//
-//        implement.insert(user);
-//
-//        return "Adduser";
-//    }
 
 
 }

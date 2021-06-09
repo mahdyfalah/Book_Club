@@ -17,14 +17,16 @@ public class Book_Abstract {
     private int book_abstract_id;
     private String details;
     private String parental_advisory;
+    private int book_id;
 
     public Book_Abstract() {
     }
 
-    public Book_Abstract(int book_abstract_id, String details, String parental_advisory) {
+    public Book_Abstract(int book_abstract_id, String details, String parental_advisory, int book_id) {
         this.book_abstract_id = book_abstract_id;
         this.details = details;
         this.parental_advisory = parental_advisory;
+        this.book_id = book_id;
     }
 
     public int getBook_abstract_id() {
@@ -49,6 +51,14 @@ public class Book_Abstract {
 
     public void setParental_advisory(String parental_advisory) {
         this.parental_advisory = parental_advisory;
+    }
+
+    public int getBook_id() {
+        return book_id;
+    }
+
+    public void setBook_id(int book_id) {
+        this.book_id = book_id;
     }
 
     @Override

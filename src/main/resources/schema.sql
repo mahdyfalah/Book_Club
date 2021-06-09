@@ -5,11 +5,9 @@ DROP TABLE IF EXISTS admin;
 
 DROP TABLE IF EXISTS rate;
 
-DROP TABLE IF EXISTS book;
-
-
 DROP TABLE IF EXISTS book_abstract;
 
+DROP TABLE IF EXISTS book;
 
 DROP TABLE IF EXISTS genre;
 
@@ -50,7 +48,9 @@ CREATE TABLE book_abstract(
     book_abstract_id INT NOT NULL AUTO_INCREMENT,
     details VARCHAR (255) NOT NULL,
     parental_advisory VARCHAR (255) NOT NULL,
-    PRIMARY KEY (book_abstract_id)
+    book_id INT NOT NULL,
+    PRIMARY KEY (book_abstract_id),
+    FOREIGN KEY (book_id) REFERENCES book(book_id)
 );
 
 CREATE TABLE genre(
