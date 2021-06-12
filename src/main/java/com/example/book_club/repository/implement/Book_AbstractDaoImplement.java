@@ -1,10 +1,12 @@
 package com.example.book_club.repository.implement;
 
+import com.example.book_club.model.Book;
 import com.example.book_club.model.Book_Abstract;
 import com.example.book_club.repository.DAO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.support.JdbcDaoSupport;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
@@ -30,6 +32,15 @@ public class Book_AbstractDaoImplement extends JdbcDaoSupport implements DAO<Boo
         setDataSource(dataSource);
     }
 
+    RowMapper<Book_Abstract> rowMapper = (rs, rowNum) -> {
+        Book_Abstract book_abstract = new Book_Abstract();
+        book_abstract.setBook_abstract_id(rs.getInt("book_abstract_id"));
+        book_abstract.setDetails(rs.getString("details"));
+        book_abstract.setParental_advisory(rs.getString("parental_advisory"));
+        book_abstract.setBook_id(rs.getInt("book_id"));
+        return book_abstract;
+    };
+
     @Override
     public List<Book_Abstract> list() {
         String sql = "Select * From book_abstract";
@@ -53,7 +64,11 @@ public class Book_AbstractDaoImplement extends JdbcDaoSupport implements DAO<Boo
 
     @Override
     public Optional<Book_Abstract> get(Integer id) {
-        return Optional.empty();
+        String sql = "SELECT * FROM book_abstract WHERE book_id = ?";
+        Book_Abstract book_abstract = null;
+        book_abstract =  jdbcTemplate.queryForObject(sql, new Object[]{id}, rowMapper);
+
+        return Optional.ofNullable(book_abstract);
     }
 
     @Override

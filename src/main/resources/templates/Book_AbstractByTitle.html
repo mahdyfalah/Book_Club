@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Books Abstract By Title</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+</head>
+<body>
+
+<div class="container my-2">
+    <h1>Books Abstract By Title</h1>
+
+
+    <table class = "table table-striped table-responsive-md">
+        <thead>
+        <tr>
+            <th>Details</th>
+            <th>Parental Advisory</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="book : ${book_abstract_list}">
+            <td th:text="${book.details}"></td>
+            <td th:text="${book.parental_advisory}"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

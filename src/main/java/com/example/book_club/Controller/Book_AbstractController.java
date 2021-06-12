@@ -4,12 +4,14 @@ import com.example.book_club.model.Book_Abstract;
 import com.example.book_club.repository.implement.Book_AbstractDaoImplement;
 import com.example.book_club.response.MessageProperties;
 import com.example.book_club.response.ResponseHandler;
+import org.springframework.data.repository.query.Param;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.List;
@@ -43,5 +45,18 @@ public class Book_AbstractController {
         service.create(book_abstract);
         return "redirect:/addBook_Abstract";
     }
+
+//    @GetMapping("/Book_AbstractByTitle")
+//    public String viewListOfBooksByTitle(Model model, @Param("book_id") Integer id) {
+//        model.addAttribute("book_abstract", service.get(id));
+//        return "Book_AbstractByTitle";
+//    }
+
+    @GetMapping("/Book_AbstractByTitle/{id}")
+    public String viewListOfBooksByTitle(Model model, @PathVariable("book_id") Integer id) {
+        model.addAttribute("book_abstract_list", service.list());
+        return "Book_AbstractByTitle";
+    }
+
 
 }
