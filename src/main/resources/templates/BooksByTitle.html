@@ -34,7 +34,7 @@
       <td th:text="${book.isbn}"></td>
       <td th:text="${book.publisher}"></td>
       <td>
-        <form th:action="@{/Book_AbstractByTitle}">
+        <form th:action="@{/Book_AbstractByTitle/{id}(id=${book.book_id})}">
           <div><button type="submit" class="btn btn-info btn-sm mb-3">read abstract</button>
           </div>
         </form>

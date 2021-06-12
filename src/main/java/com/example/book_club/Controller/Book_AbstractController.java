@@ -46,17 +46,17 @@ public class Book_AbstractController {
         return "redirect:/addBook_Abstract";
     }
 
-//    @GetMapping("/Book_AbstractByTitle")
-//    public String viewListOfBooksByTitle(Model model, @Param("book_id") Integer id) {
-//        model.addAttribute("book_abstract", service.get(id));
-//        return "Book_AbstractByTitle";
-//    }
-
-    @GetMapping("/Book_AbstractByTitle/{id}")
+    @GetMapping("/Book_AbstractByTitle/{book_id}")
     public String viewListOfBooksByTitle(Model model, @PathVariable("book_id") Integer id) {
-        model.addAttribute("book_abstract_list", service.list());
+        model.addAttribute("book_abstract", service.get(id));
         return "Book_AbstractByTitle";
     }
+
+//    @GetMapping("/Book_AbstractByTitle/{id}")
+//    public String viewListOfBooksByTitle(Model model, @PathVariable("book_id") Integer id) {
+//        model.addAttribute("book_abstract_list", service.list());
+//        return "Book_AbstractByTitle";
+//    }
 
 
 }

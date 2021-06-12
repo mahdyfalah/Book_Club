@@ -20,9 +20,9 @@
         </tr>
         </thead>
         <tbody>
-        <tr th:each="book : ${book_abstract_list}">
-            <td th:text="${book.details}"></td>
-            <td th:text="${book.parental_advisory}"></td>
+        <tr th:each="book : ${book_abstract}">
+            <td th:text="${book_abstract.get().getDetails()}"></td>
+            <td th:text="${book_abstract.get().getParental_advisory()}"></td>
         </tr>
         </tbody>
     </table>
