@@ -2,7 +2,6 @@ DROP TABLE IF EXISTS user;
 
 DROP TABLE IF EXISTS admin;
 
-
 DROP TABLE IF EXISTS rate;
 
 DROP TABLE IF EXISTS book_abstract;
@@ -32,7 +31,7 @@ CREATE TABLE rate(
     rating_ID INT NOT NULL AUTO_INCREMENT,
     rate INT NOT NULL,
     text_review VARCHAR (255),
-    rate_date DATE NOT NULL,
+    rate_date  VARCHAR (255) NOT NULL,
     PRIMARY KEY (rating_id)
 );
 

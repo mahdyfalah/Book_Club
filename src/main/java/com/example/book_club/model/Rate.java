@@ -11,7 +11,6 @@ import java.util.Date;
 
 @Entity
 @Data
-@AllArgsConstructor
 @Table(name = "Rate")
 public class Rate {
 
@@ -20,16 +19,16 @@ public class Rate {
     private int rating_id;
     private int rate;
     private String text_review;
-    private Date rate_date;
+    private String rate_date;
 
     public Rate() {
     }
 
-    public Rate(int rating_ID, int rate, String text_review) {
-        this.rating_id = rating_ID;
+    public Rate(int rating_id, int rate, String text_review, String rate_date) {
+        this.rating_id = rating_id;
         this.rate = rate;
         this.text_review = text_review;
-        this.rate_date = new Date();
+        this.rate_date = rate_date;
     }
 
     public int getRating_id() {
@@ -56,8 +55,12 @@ public class Rate {
         this.text_review = text_review;
     }
 
-    public Date getRate_date() {
+    public String getRate_date() {
         return rate_date;
+    }
+
+    public void setRate_date(String rate_date) {
+        this.rate_date = rate_date;
     }
 
     @Override
